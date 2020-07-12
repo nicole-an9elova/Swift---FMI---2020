@@ -283,8 +283,12 @@ class DefaultEquipmentGenerator : EquipmentGenerator {
     var allWeapons: [Weapon]
     
     init() {
-        allArmors = [NoArmor()]
-        allWeapons = [WoodenStick()]
+        allArmors = [NoArmor(), StuddedCuirass(), DwarvenPlate(),
+                    ElvenChain(), TwistCloth(), ClothesOfTheSpirit(), 
+                    RobeOfCalm(), HempClothes(), MithrilCloak(), TieflingCraftedArmor()]
+        allWeapons = [WoodenStick(), AcidBreathWeapon(), DwarvenAxe(),
+                     MaglorKnives(), QuickRazor(), SorcererssStaff(),
+                     LightCrossBow(), PainOfGodnessSword(), Rapier(), ThePoisonousRanseur()]
     }
 }
 
