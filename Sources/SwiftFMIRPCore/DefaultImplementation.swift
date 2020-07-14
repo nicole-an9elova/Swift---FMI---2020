@@ -205,12 +205,18 @@ class DefaultMap : Map {
     
 }
 
-class DefaultFightGenerator : FightGenerator {
+class DefaultFightGenerator : FightGenerator, Fight {
     var turn: Int = 0
-    func combat(attacker: inout Hero, host: inout Hero) -> String? {
-        var winner: String?
+    var attacker: Hero = DefaultHero()
+    var host: Hero = DefaultHero()
+    
+    func start(finish:(Fight) -> ()){}
+    var winner: Hero = DefaultHero()
+    func combat(attacker: inout Hero, host: inout Hero) -> Hero? {
         var attacking: Int 
         var defending: Int 
+        self.attacker = attacker
+        self.host = host
         attacker.energy -= 1
         while attacker.lifePoitns > 0 && host.lifePoitns > 0{
             if turn % 2 == 0{
@@ -236,9 +242,9 @@ class DefaultFightGenerator : FightGenerator {
             turn += 1
         }
         if attacker.lifePoitns < host.lifePoitns {
-            winner = host.race
+            winner = host
         }else if  host.lifePoitns < attacker.lifePoitns{
-            winner = attacker.race
+            winner = attacker
         }
         return winner
     }
