@@ -94,27 +94,27 @@ class Armors: Armor {
     var defence: Int
 
     init(number: Int){
-        self.attack = 0
+        self.attack = Int.random(in: 1...4)
         print("Your armor is the \(ArmorsNames.allCases[number])")
         switch number{
             case 0:
-                self.defence = 32
+                self.defence = 8
             case 1: 
-                self.defence = 25
+                self.defence = 6
             case 2: 
-                self.defence = 27
+                self.defence = 7
             case 3: 
-                self.defence = 18
+                self.defence = 5
             case 4: 
-                self.defence = 26
+                self.defence = 6
             case 5: 
-                self.defence = 15
+                self.defence = 4
             case 6: 
-                self.defence = 20
+                self.defence = 5
             case 7: 
-                self.defence = 30
+                self.defence = 8
             case 8: 
-                self.defence = 22
+                self.defence = 5
             default:
                 self.defence = 0
         }
