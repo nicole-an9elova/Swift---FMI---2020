@@ -21,7 +21,7 @@ protocol Fight {
 }
 
 protocol FightGenerator {
-    func combat(attacker: inout Hero, host: inout Hero) -> String?
+    func combat(attacker: inout Hero, host: inout Hero) -> Hero?
 }
 
 protocol EquipmentGenerator {
