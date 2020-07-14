@@ -18,6 +18,18 @@ struct DefaultHero: Hero {
     }
 }
 
+enum Race: String, CaseIterable{
+    case DragonBorn = "Dragon Born"
+    case Dwarf = "Dwarf"
+    case Elf = "Elf"
+    case Gnome = "Gnome" 
+    case HalfElf = "Half-Elf" 
+    case Halfling = "Halfling"
+    case HalfOrc = "Half-Orc"
+    case Human = "Human"
+    case Tiefling = "Tiefling"
+}
+
 struct NoArmor: Armor {
     var attack: Int = 0
     var defence: Int = 0
@@ -26,6 +38,87 @@ struct NoArmor: Armor {
 struct WoodenStick: Weapon {
     var attack: Int = 2
     var defence: Int = 1
+}
+
+enum WeaponNames: CaseIterable{
+    case AcidBreathWeapon, DwarvenAxe, MaglorKnives, QuickRazor, SorcererssStaff, 
+    LightCrossBow, PainOfGodnessSword, Rapier, ThePoisonousRanseur
+}
+class Weapons: Weapon{
+    var attack: Int
+    var defence: Int
+    init(number: Int){
+        print("Your weapon is the \(WeaponNames.allCases[number])")
+        switch number{
+            case 0:
+                self.attack = 4
+                self.defence = 2
+            case 1: 
+                self.attack = 2
+                self.defence = 2
+            case 2: 
+                self.attack = 2
+                self.defence = 1
+            case 3: 
+                self.attack = 4
+                self.defence = 3
+            case 4: 
+                self.attack = 3
+                self.defence = 3
+            case 5: 
+                self.attack = 4
+                self.defence = 4
+            case 6: 
+                self.attack = 3
+                self.defence = 2
+            case 7: 
+                self.attack = 2
+                self.defence = 2
+            case 8: 
+                self.attack = 3
+                self.defence = 1
+            default:
+                self.attack = 0
+                self.defence = 0
+        }
+    }
+}
+
+enum ArmorsNames: CaseIterable{
+    case StuddedCuirass, DwarvenPlate, ElvenChain, TwistCloth, ClothesOfTheSpirit, 
+        RobeOfCalm, HempClothes, MithrilCloak, TieflingCraftedArmor
+}
+
+class Armors: Armor {
+    var attack: Int
+    var defence: Int
+
+    init(number: Int){
+        self.attack = 0
+        print("Your armor is the \(ArmorsNames.allCases[number])")
+        switch number{
+            case 0:
+                self.defence = 32
+            case 1: 
+                self.defence = 25
+            case 2: 
+                self.defence = 27
+            case 3: 
+                self.defence = 18
+            case 4: 
+                self.defence = 26
+            case 5: 
+                self.defence = 15
+            case 6: 
+                self.defence = 20
+            case 7: 
+                self.defence = 30
+            case 8: 
+                self.defence = 22
+            default:
+                self.defence = 0
+        }
+    }
 }
 
 
@@ -51,17 +144,17 @@ struct DefaultPlayerGenerator: PlayerGenerator {
 
 struct DefaultHeroGenerator: HeroGenerator {
     func getRandom() -> Hero {
-        //changing the implemenation 
-        //not finished
-        let gettingRandomRace = Int.random(in: 1...9)
+            let gettingRandomRace = Int.random(in: 1...9)
             var race: String
-            var energy: Int
-            var lifePoints: Int
+            var energy: Int = 5
+            var lifePoints: Int = 7
             var weapon: Weapon?
             var armor: Armor?
+        
+            race = Race.allCases[gettingRandomRace].rawValue
+            weapon = Weapons(number: gettingRandomRace)
+            armor = Armors(number: gettingRandomRace)
 
-            
-        //promeni
         return DefaultHero(race: race, energy: energy, lifePoints: lifePoints, weapon: weapon, armor: armor)
     }
 }
