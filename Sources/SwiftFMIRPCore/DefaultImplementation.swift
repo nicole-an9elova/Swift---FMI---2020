@@ -256,12 +256,13 @@ class DefaultEquipmentGenerator : EquipmentGenerator {
     var allWeapons: [Weapon]
     
     init() {
-        allArmors = [NoArmor(), StuddedCuirass(), DwarvenPlate(),
-                    ElvenChain(), TwistCloth(), ClothesOfTheSpirit(), 
-                    RobeOfCalm(), HempClothes(), MithrilCloak(), TieflingCraftedArmor()]
-        allWeapons = [WoodenStick(), AcidBreathWeapon(), DwarvenAxe(),
-                     MaglorKnives(), QuickRazor(), SorcererssStaff(),
-                     LightCrossBow(), PainOfGodnessSword(), Rapier(), ThePoisonousRanseur()]
+        //it prints every armor and weapon. it should be fixed 
+        allArmors = [NoArmor(), Armors(number: 0), Armors(number: 1), 
+                    Armors(number: 2), Armors(number: 3), Armors(number: 4),
+                    Armors(number: 5), Armors(number: 6), Armors(number: 7), Armors(number: 8]
+        allWeapons = [WoodenStick(), Weapons(number: 0), Weapons(number: 1), 
+                    Weapons(number: 2), Weapons(number: 3), Weapons(number: 4),
+                    Weapons(number: 5), Weapons(number: 6), Weapons(number: 7), Weapons(number: 8]
     }
 }
 
