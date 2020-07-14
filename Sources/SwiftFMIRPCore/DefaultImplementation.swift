@@ -206,7 +206,42 @@ class DefaultMap : Map {
 }
 
 class DefaultFightGenerator : FightGenerator {
-    //TBD
+    var turn: Int = 0
+    func combat(attacker: inout Hero, host: inout Hero) -> String? {
+        var winner: String?
+        var attacking: Int 
+        var defending: Int 
+        attacker.energy -= 1
+        while attacker.lifePoitns > 0 && host.lifePoitns > 0{
+            if turn % 2 == 0{
+                //attacker
+                attacking = attacker.armor!.attack + attacker.weapon!.attack + Int.random(in: 1...4)
+                defending = host.armor!.defence + host.weapon!.defence
+                //print("this is the damage Att \(host.lifePoitns)")
+                host.lifePoitns -= attacking
+            }else{
+                //host
+                attacking = host.armor!.attack + host.weapon!.attack + Int.random(in: 1...4)
+                defending = attacker.armor!.defence + attacker.weapon!.defence 
+                //print("this is the damage Hoss \(attacker.lifePoitns)")
+                attacker.lifePoitns -= attacking
+            }
+            if attacking < defending{
+                print("Round # \(turn + 1) is won by \(host.race)")
+            }else if attacking > defending{
+                print("Round # \(turn + 1) is won by \(attacker.race)")
+            }else{
+                print("Round # \(turn + 1) is equal")
+            }
+            turn += 1
+        }
+        if attacker.lifePoitns < host.lifePoitns {
+            winner = host.race
+        }else if  host.lifePoitns < attacker.lifePoitns{
+            winner = attacker.race
+        }
+        return winner
+    }
 }
 
 class DefaultEquipmentGenerator : EquipmentGenerator {
